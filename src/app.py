@@ -17,7 +17,7 @@ bot = Bot(ACCESS_TOKEN)
 # We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
-    print(os.getcwd())
+
     # Get verify token to ensure requests are legitimate
     if request.method == 'GET':
         token_sent = request.args.get("hub.verify_token")
@@ -38,21 +38,40 @@ def receive_message():
                     rec_message = message['message'].get('text')
                     rec_timestamp = message['timestamp']
 
+                    # Determine if this is the start of a new conversation
+                    conversation_start = _get_recent_conversation(member_id)
+
                     # Save rec in database
-                    db.add_message(rec_message, member_id, rec_timestamp, 'received')
+                    db.add_message(rec_message, member_id, rec_timestamp, 'received', conversation_start)
 
                     # Add user to database
                     db.add_user(member_id)
 
                     if rec_message:
-                        response_sent_text = _get_message(rec_message)
-                        _send_message(member_id, response_sent_text)
+                        response_sent_text = _get_message(rec_message, conversation_start, member_id)
+                        _send_message(member_id, response_sent_text, conversation_start)
 
                     # If user sends us a GIF, photo,video, or any other non-text item
                     if message['message'].get('attachments'):
                         _send_message(member_id, "My brain is not yet big enough to deal with images!")
 
     return "Message Processed"
+
+
+def _get_recent_conversation(member_id):
+    recent_msg_timestamp = db.most_recent_message_timestamp(member_id)
+    current_time = int(time.time() * 1000)
+
+    time_difference = current_time - int(recent_msg_timestamp)
+
+
+    if time_difference <= 300000:
+        conversation_start = 0
+
+    else:
+        conversation_start = 1
+
+    return conversation_start
 
 
 def _verify_fb_token(token_sent):
@@ -62,23 +81,19 @@ def _verify_fb_token(token_sent):
     return 'Invalid verification token'
 
 
-def _get_message(rec_message):
-    response_text = gen_response(rec_message)
-    #sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
-    #random.choice(sample_responses)
+def _get_message(rec_message, conversation_start, member_id):
+    response_text = gen_response(rec_message, conversation_start, member_id)
+
     return response_text
 
 
-def _send_message(member_id, response):
+def _send_message(member_id, response, conversation_start):
     sent_timestamp = int(time.time() * 1000)
 
     bot.send_text_message(member_id, response)
 
     # Save sent message in database
-    db.add_message(response, member_id, sent_timestamp, 'sent')
-
-    convo = db.get_current_conversation(member_id)
-    print(convo)
+    db.add_message(response, member_id, sent_timestamp, 'sent', conversation_start)
 
     return "success"
 
