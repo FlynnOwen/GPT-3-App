@@ -6,6 +6,7 @@ from flask import Flask, request
 from pymessenger.bot import Bot
 
 import database.db_test_scripts as db
+from prompt_design import gen_response
 
 app = Flask(__name__)
 ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
@@ -37,11 +38,14 @@ def receive_message():
                     rec_message = message['message'].get('text')
                     rec_timestamp = message['timestamp']
 
-                    # Save in database
+                    # Save rec in database
                     db.add_message(rec_message, member_id, rec_timestamp, 'received')
 
+                    # Add user to database
+                    db.add_user(member_id)
+
                     if rec_message:
-                        response_sent_text = _get_message()
+                        response_sent_text = _get_message(rec_message)
                         _send_message(member_id, response_sent_text)
 
                     # If user sends us a GIF, photo,video, or any other non-text item
@@ -58,19 +62,23 @@ def _verify_fb_token(token_sent):
     return 'Invalid verification token'
 
 
-def _get_message():
-    sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
-
-    return random.choice(sample_responses)
+def _get_message(rec_message):
+    response_text = gen_response(rec_message)
+    #sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
+    #random.choice(sample_responses)
+    return response_text
 
 
 def _send_message(member_id, response):
     sent_timestamp = int(time.time() * 1000)
 
-    # Save in database
+    bot.send_text_message(member_id, response)
+
+    # Save sent message in database
     db.add_message(response, member_id, sent_timestamp, 'sent')
 
-    bot.send_text_message(member_id, response)
+    convo = db.get_current_conversation(member_id)
+    print(convo)
 
     return "success"
 
