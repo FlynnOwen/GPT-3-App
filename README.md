@@ -1,4 +1,4 @@
-# Flatie Owoods repository for API that will make them millionaires
+# Repository for the app that makes Flynn a millionaire
 
 * src contains source code for application
 * tests contains unit tests for source code
