@@ -4,6 +4,11 @@
 * tests contains unit tests for source code
 * Dockerfile to build and host cross-platform
 
+# Pre-requisites:
+To start with this project you will need the following installed:
+* Python 3+
+* Ngrok
+
 
 To get started with project:
 ```[bash]
