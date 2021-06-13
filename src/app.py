@@ -60,9 +60,10 @@ def receive_message():
 def _get_recent_conversation(member_id):
     recent_msg_timestamp = db.most_recent_message_timestamp(member_id)
     current_time = int(time.time() * 1000)
-
-    time_difference = current_time - int(recent_msg_timestamp)
-
+    try:
+        time_difference = current_time - int(recent_msg_timestamp)
+    except TypeError:
+        time_difference = 300001
 
     if time_difference <= 300000:
         conversation_start = 0
@@ -92,7 +93,7 @@ def _send_message(member_id, response, conversation_start):
     bot.send_text_message(member_id, response)
 
     # Save sent message in database
-    db.add_message(response, member_id, sent_timestamp, 'sent', conversation_start)
+    db.add_message(response, member_id, sent_timestamp, 'sent', 0)
 
     return "success"
 

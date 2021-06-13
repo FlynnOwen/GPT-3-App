@@ -46,7 +46,7 @@ def most_recent_message_timestamp(member_id):
     recent_date = cur.fetchone()
     conn.commit()
     conn.close()
-    print(recent_date[0])
+
     return recent_date[0]
 
 def get_current_conversation(member_id):
