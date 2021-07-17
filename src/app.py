@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 import os
 import time
 
@@ -55,7 +56,7 @@ def receive_message():
                         _send_message(member_id, "My brain is not yet big enough to deal with images!")
 
     return "Message Processed"
-
+    #return request.base_url
 
 def _get_recent_conversation(member_id):
     recent_msg_timestamp = db.most_recent_message_timestamp(member_id)
@@ -99,4 +100,4 @@ def _send_message(member_id, response, conversation_start):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, port=5000)
