@@ -7,7 +7,7 @@ from flask import Flask, request
 from pymessenger.bot import Bot
 
 import database.db_test_scripts as db
-from prompt_design import gen_response
+from src.prompt_design import gen_response
 
 app = Flask(__name__)
 
