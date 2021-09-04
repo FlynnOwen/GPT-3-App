@@ -22,7 +22,3 @@ Good notes and documentation:
 * ngrok - local web server hosting client:
   * https://ngrok.com/docs
   * https://dashboard.ngrok.com/get-started/setup
-    
-* Twilio - SMS sending application:
-  * https://www.twilio.com/docs/sms/tutorials/how-to-receive-and-reply-python
-  * https://www.twilio.com/docs/sms/quickstart/python  
