@@ -26,6 +26,7 @@ app.logger.setLevel(logging.ERROR)
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
     print('rec')
+    sys.stdout.flush()
     # Get verify token to ensure requests are legitimate
     if request.method == 'GET':
         print('get')
