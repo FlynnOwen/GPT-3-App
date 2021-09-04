@@ -25,9 +25,10 @@ app.logger.setLevel(logging.ERROR)
 # We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
-
+    print('rec')
     # Get verify token to ensure requests are legitimate
     if request.method == 'GET':
+        print('get')
         token_sent = request.args.get("hub.verify_token")
         return _verify_fb_token(token_sent)
 
@@ -84,9 +85,11 @@ def _get_recent_conversation(member_id):
 
 
 def _verify_fb_token(token_sent):
+    print('in get')
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
     else:
+        print('in get else')
         return 'Invalid verification token'
 
 
