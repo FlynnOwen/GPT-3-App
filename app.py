@@ -16,6 +16,11 @@ ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 VERIFY_TOKEN = os.getenv('VERIFY_TOKEN')
 bot = Bot(ACCESS_TOKEN)
 
+import logging
+import sys
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+
 
 # We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
