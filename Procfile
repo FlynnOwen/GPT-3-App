@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath app.wsgi
+web: gunicorn --pythonpath src.app
