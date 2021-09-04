@@ -64,7 +64,7 @@ def receive_message():
                         _send_message(member_id, "My brain is not yet big enough to deal with images!")
 
     return "Message Processed"
-    #return request.base_url
+
 
 def _get_recent_conversation(member_id):
     recent_msg_timestamp = db.most_recent_message_timestamp(member_id)
@@ -86,8 +86,8 @@ def _get_recent_conversation(member_id):
 def _verify_fb_token(token_sent):
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
-
-    return 'Invalid verification token'
+    else:
+        return 'Invalid verification token'
 
 
 def _get_message(rec_message, conversation_start, member_id):
