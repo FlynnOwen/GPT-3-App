@@ -9,6 +9,7 @@ MarkupSafe==2.0.1
 openai==0.6.4
 PyJWT==1.7.1
 pymessenger==0.0.7.0
+python-dotenv==0.19.0
 pytz==2021.1
 requests==2.25.1
 requests-toolbelt==0.9.1

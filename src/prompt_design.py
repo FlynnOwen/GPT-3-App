@@ -1,8 +1,11 @@
 #! /usr/bin/env python3
 import os
 import openai
+from dotenv import load_dotenv
 
 from database.db_test_scripts import get_current_conversation
+
+load_dotenv()
 
 DEFAULT_PROMPT = """The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.
 

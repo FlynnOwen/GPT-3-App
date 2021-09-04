@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 import os
 import time
+from dotenv import load_dotenv
 
 from flask import Flask, request
 from pymessenger.bot import Bot
@@ -9,6 +10,8 @@ import database.db_test_scripts as db
 from prompt_design import gen_response
 
 app = Flask(__name__)
+
+load_dotenv()
 ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 VERIFY_TOKEN = os.getenv('VERIFY_TOKEN')
 bot = Bot(ACCESS_TOKEN)
