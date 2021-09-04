@@ -103,4 +103,4 @@ def _send_message(member_id, response, conversation_start):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
