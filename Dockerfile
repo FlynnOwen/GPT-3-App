@@ -12,6 +12,6 @@ WORKDIR ../tests
 COPY tests ./
 
 WORKDIR ../src
-COPY src ./
+COPY promt ./
 
 CMD python app.py
