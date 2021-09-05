@@ -4,7 +4,7 @@ import sqlite3
 
 def add_message(message, member_id, timestamp, direction, conversation_start):
 
-    conn = sqlite3.connect("../database/API-App-DB.db")
+    conn = sqlite3.connect("database/API-App-DB.db")
     cur = conn.cursor()
 
     cur.execute("""INSERT INTO messages 
@@ -18,7 +18,7 @@ def add_message(message, member_id, timestamp, direction, conversation_start):
 
 
 def add_user(member_id):
-    conn = sqlite3.connect('../database/API-App-DB.db')
+    conn = sqlite3.connect('database/API-App-DB.db')
     cur = conn.cursor()
     try:
         cur.execute("""INSERT INTO users 
@@ -34,7 +34,7 @@ def add_user(member_id):
 
 
 def most_recent_message_timestamp(member_id):
-    conn = sqlite3.connect('../database/API-App-DB.db')
+    conn = sqlite3.connect('database/API-App-DB.db')
     cur = conn.cursor()
     try:
         cur.execute("""SELECT max(timestamp) FROM messages WHERE 
@@ -51,7 +51,7 @@ def most_recent_message_timestamp(member_id):
     return recent_date[0]
 
 def get_current_conversation(member_id):
-    conn = sqlite3.connect('../database/API-App-DB.db')
+    conn = sqlite3.connect('database/API-App-DB.db')
     cur = conn.cursor()
     try:
         cur.execute("""SELECT message FROM messages WHERE 
