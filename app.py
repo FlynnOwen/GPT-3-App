@@ -12,10 +12,8 @@ from promt.prompt_design import gen_response
 app = Flask(__name__)
 
 load_dotenv()
-ACCESS_TOKEN = 'EAA5xhX9z1hABAPV5W4NZB2XxWrbevp606PgQHoO4y7qwi14ZCV7SARQFqjC4MxdovbJyYvFAmOm9HVgK3GuOfVDZBSL2mFJZCPwxML6B3FZCacYVGqDMidEPv01nHgrGGRVpqqTdAD0KkZBfVwcgoLnsXJX5MpWZAkMaF6tcxDKPw9o0VK1sflB'
-#os.getenv('ACCESS_TOKEN')
-VERIFY_TOKEN = 'TESTINGTOKEN'
-#os.getenv('VERIFY_TOKEN')
+ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+VERIFY_TOKEN = os.getenv('VERIFY_TOKEN')
 bot = Bot(ACCESS_TOKEN)
 
 import logging
