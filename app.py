@@ -7,7 +7,7 @@ from flask import Flask, request
 from pymessenger.bot import Bot
 
 import database.db_test_scripts as db
-from prompt_design import gen_response
+from promt.prompt_design import gen_response
 
 app = Flask(__name__)
 
@@ -16,6 +16,12 @@ ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 VERIFY_TOKEN = os.getenv('VERIFY_TOKEN')
 bot = Bot(ACCESS_TOKEN)
 
+import logging
+import sys
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+app.logger.info('THIS IS A TEST')
+
 
 # We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
@@ -23,6 +29,7 @@ def receive_message():
 
     # Get verify token to ensure requests are legitimate
     if request.method == 'GET':
+        print('get')
         token_sent = request.args.get("hub.verify_token")
         return _verify_fb_token(token_sent)
 
@@ -59,7 +66,7 @@ def receive_message():
                         _send_message(member_id, "My brain is not yet big enough to deal with images!")
 
     return "Message Processed"
-    #return request.base_url
+
 
 def _get_recent_conversation(member_id):
     recent_msg_timestamp = db.most_recent_message_timestamp(member_id)
@@ -79,10 +86,11 @@ def _get_recent_conversation(member_id):
 
 
 def _verify_fb_token(token_sent):
+    print('in get')
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
-
-    return 'Invalid verification token'
+    else:
+        return 'Invalid verification token'
 
 
 def _get_message(rec_message, conversation_start, member_id):
@@ -103,4 +111,5 @@ def _send_message(member_id, response, conversation_start):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    app.debug = True
+    app.run()
