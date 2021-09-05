@@ -1,24 +1,13 @@
-# Repository for the app that makes Flynn a millionaire
+# A Facebook Messenger implementation of OpenAI's GPT-3
 
-* src contains source code for application
-* tests contains unit tests for source code
-* Dockerfile to build and host cross-platform
+This is a Facebook application version of the Open AI's GPT-3 API: https://openai.com/blog/openai-api/
 
-# Pre-requisites:
-To start with this project you will need the following installed:
-* Python 3+
-* Ngrok
+* It is coded to be a simple conversation implementation. It will respond to messages one at a time, and can not yet respond to images, links, gifs, or any other type of attachment. This implementation has a 'working memory' of 5 minutes - meaning that if it hasn't received a message within 5 minutes of your previous message, it's memory is wiped. This wiping could be considered as a 'conversation'. 
+
+* Web hosting is on a Heroku server (https://www.heroku.com). The server has a CI/CD integration with this Github repository, such that any pushes to the 'main' branch result in a rebuilding of the web application.
+
+## Pre-requisites for usage:
+* A Facebook account
+* Administrator access to the Facebook Developer Application (request Flynn for this access - info@flynnowen.com)
 
 
-To get started with project:
-```[bash]
-$ git clone repo
-$ pip3 install requirements.txt
-```
-
-begin editing and working on the project. Please ensure that you push changes into a branch and run unittests.
-
-Good notes and documentation:
-* ngrok - local web server hosting client:
-  * https://ngrok.com/docs
-  * https://dashboard.ngrok.com/get-started/setup
