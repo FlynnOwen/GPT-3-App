@@ -30,7 +30,6 @@ def receive_message():
     if request.method == 'GET':
         print('get')
         token_sent = request.args.get("hub.verify_token")
-        return 'yes'
         return _verify_fb_token(token_sent)
 
     # Post request from user when a message is received
@@ -87,6 +86,7 @@ def _get_recent_conversation(member_id):
 
 def _verify_fb_token(token_sent):
     print('in get')
+    return 'yes'
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
     else:
