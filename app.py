@@ -20,13 +20,13 @@ import logging
 import sys
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
 app.logger.setLevel(logging.ERROR)
-
+app.logger.info('THIS IS A TEST')
 
 # We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
     print('rec')
-    sys.stdout.flush()
+    app.logger.info('THIS IS A TEST')
     # Get verify token to ensure requests are legitimate
     if request.method == 'GET':
         print('get')
