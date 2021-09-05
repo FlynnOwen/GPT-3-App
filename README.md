@@ -6,6 +6,8 @@ This is a Facebook application version of the Open AI's GPT-3 API: https://opena
 
 * Web hosting is on a Heroku server (https://www.heroku.com). The server has a CI/CD integration with this Github repository, such that any pushes to the 'main' branch result in a rebuilding of the web application.
 
+![grab-landing-page](https://github.com/FlynnOwen/GPT-3-App/blob/main/img/GPT-3.gif)
+
 ## Pre-requisites for usage:
 * A Facebook account
 * Administrator access to the Facebook Developer Application (request Flynn for this access - info@flynnowen.com)
