@@ -1,4 +1,4 @@
-# A Facebook Messenger implementation of OpenAI's GPT-3
+# Facebook Messenger implementation of OpenAI's GPT-3
 
 This is a Facebook application version of the Open AI's GPT-3 API: https://openai.com/blog/openai-api/
 
