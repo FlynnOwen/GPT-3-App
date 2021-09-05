@@ -25,10 +25,10 @@ app.logger.info('THIS IS A TEST')
 # We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
-    return 'yes'
 
     # Get verify token to ensure requests are legitimate
     if request.method == 'GET':
+        return 'yes'
         print('get')
         token_sent = request.args.get("hub.verify_token")
         return _verify_fb_token(token_sent)
@@ -65,7 +65,7 @@ def receive_message():
                     if message['message'].get('attachments'):
                         _send_message(member_id, "My brain is not yet big enough to deal with images!")
 
-        return "Message Processed"
+    return "Message Processed"
 
 
 def _get_recent_conversation(member_id):
