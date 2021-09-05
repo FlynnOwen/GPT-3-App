@@ -87,7 +87,7 @@ def _get_recent_conversation(member_id):
 def _verify_fb_token(token_sent):
     print('in get')
     if token_sent == VERIFY_TOKEN:
-        return 'yes'
+        return str(request.args.get("hub.challenge"))
         return request.args.get("hub.challenge")
     else:
         return 'no'
