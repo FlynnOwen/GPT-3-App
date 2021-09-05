@@ -65,7 +65,7 @@ def receive_message():
                     if message['message'].get('attachments'):
                         _send_message(member_id, "My brain is not yet big enough to deal with images!")
 
-    return "Message Processed"
+        return "Message Processed"
 
 
 def _get_recent_conversation(member_id):
