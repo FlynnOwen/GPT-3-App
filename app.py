@@ -25,8 +25,8 @@ app.logger.info('THIS IS A TEST')
 # We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
-    print('rec')
-    app.logger.info('THIS IS A TEST')
+    return 'yes'
+
     # Get verify token to ensure requests are legitimate
     if request.method == 'GET':
         print('get')
