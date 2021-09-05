@@ -65,7 +65,7 @@ def receive_message():
 
                     # If user sends us a GIF, photo,video, or any other non-text item
                     elif message['message'].get('attachments'):
-                        _send_message(member_id, "My brain is not yet big enough to deal with images!")
+                        _send_message(member_id, "My brain is not yet big enough to deal with attachments! You'll need to settle with messages for now")
 
     return "Message Processed"
 
