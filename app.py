@@ -12,8 +12,10 @@ from promt.prompt_design import gen_response
 app = Flask(__name__)
 
 load_dotenv()
-ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
-VERIFY_TOKEN = os.getenv('VERIFY_TOKEN')
+ACCESS_TOKEN = 'EAA5xhX9z1hABAPV5W4NZB2XxWrbevp606PgQHoO4y7qwi14ZCV7SARQFqjC4MxdovbJyYvFAmOm9HVgK3GuOfVDZBSL2mFJZCPwxML6B3FZCacYVGqDMidEPv01nHgrGGRVpqqTdAD0KkZBfVwcgoLnsXJX5MpWZAkMaF6tcxDKPw9o0VK1sflB'
+#os.getenv('ACCESS_TOKEN')
+VERIFY_TOKEN = 'TESTINGTOKEN'
+#os.getenv('VERIFY_TOKEN')
 bot = Bot(ACCESS_TOKEN)
 
 import logging
@@ -21,6 +23,7 @@ import sys
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
 app.logger.setLevel(logging.ERROR)
 app.logger.info('THIS IS A TEST')
+
 
 # We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
@@ -88,10 +91,7 @@ def _verify_fb_token(token_sent):
     print('in get')
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
-
     else:
-        return 'no'
-        print('in get else')
         return 'Invalid verification token'
 
 
