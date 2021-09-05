@@ -50,22 +50,25 @@ def receive_message():
                     rec_message = message['message'].get('text')
                     rec_timestamp = message['timestamp']
 
-                    # Determine if this is the start of a new conversation
-                    conversation_start = _get_recent_conversation(member_id)
-
-                    # Save rec in database
-                    db.add_message(rec_message, member_id, rec_timestamp, 'received', conversation_start)
-
-                    # Add user to database
-                    db.add_user(member_id)
-
                     if rec_message:
+                        # Determine if this is the start of a new conversation
+                        conversation_start = _get_recent_conversation(member_id)
+
+                        # Save rec in database
+                        db.add_message(rec_message, member_id, rec_timestamp, 'received', conversation_start)
+
+                        # Add user to database
+                        db.add_user(member_id)
+
+                        # Generate a response
                         response_sent_text = _get_message(rec_message, conversation_start, member_id)
                         _send_message(member_id, response_sent_text)
 
                     # If user sends us a GIF, photo,video, or any other non-text item
                     elif message['message'].get('attachments'):
-                        _send_message(member_id, "My brain is not yet big enough to deal with attachments! You'll need to settle with messages for now")
+
+                        _send_message(member_id, "My brain is not yet big enough to deal with attachments! You'll need to settle with messages for now", True)
+
 
     return "Message Processed"
 
@@ -103,16 +106,22 @@ def _get_message(rec_message, conversation_start, member_id):
     return response_text
 
 
-def _send_message(member_id, response):
-    sent_timestamp = int(time.time() * 1000)
+def _send_message(member_id, response, attachment=False):
 
-    bot.send_text_message(member_id, response)
+    if not attachment:
+        sent_timestamp = int(time.time() * 1000)
 
-    # Save sent message in database
-    db.add_message(response, member_id, sent_timestamp, 'sent', 0)
+        bot.send_text_message(member_id, response)
 
-    return "success"
+        # Save sent message in database
+        db.add_message(response, member_id, sent_timestamp, 'sent', 0)
 
+        return "success - message had attachments"
+
+    else:
+        bot.send_text_message(member_id, response)
+
+        return "success - message had attachments"
 
 if __name__ == "__main__":
     app.debug = True
