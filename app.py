@@ -1,26 +1,28 @@
 #! /usr/bin/env python3
 import os
 import time
+import sys
 from dotenv import load_dotenv
 
 from flask import Flask, request
 from pymessenger.bot import Bot
+import logging
 
 import database.db_test_scripts as db
 from prompt.prompt_design import gen_response
 
+# Initialize app
 app = Flask(__name__)
 
+# Load environment variables
 load_dotenv()
 ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 VERIFY_TOKEN = os.getenv('VERIFY_TOKEN')
 bot = Bot(ACCESS_TOKEN)
 
-import logging
-import sys
+# Add logging
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
 app.logger.setLevel(logging.ERROR)
-app.logger.info('THIS IS A TEST')
 
 
 # We will receive messages that Facebook sends our bot at this endpoint
@@ -62,7 +64,7 @@ def receive_message():
                         _send_message(member_id, response_sent_text)
 
                     # If user sends us a GIF, photo,video, or any other non-text item
-                    if message['message'].get('attachments'):
+                    elif message['message'].get('attachments'):
                         _send_message(member_id, "My brain is not yet big enough to deal with images!")
 
     return "Message Processed"
@@ -71,6 +73,7 @@ def receive_message():
 def _get_recent_conversation(member_id):
     recent_msg_timestamp = db.most_recent_message_timestamp(member_id)
     current_time = int(time.time() * 1000)
+
     try:
         time_difference = current_time - int(recent_msg_timestamp)
     except TypeError:
@@ -86,9 +89,10 @@ def _get_recent_conversation(member_id):
 
 
 def _verify_fb_token(token_sent):
-    print('in get')
+
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
+
     else:
         return 'Invalid verification token'
 
