@@ -59,7 +59,7 @@ def receive_message():
 
                     if rec_message:
                         response_sent_text = _get_message(rec_message, conversation_start, member_id)
-                        _send_message(member_id, response_sent_text, conversation_start)
+                        _send_message(member_id, response_sent_text)
 
                     # If user sends us a GIF, photo,video, or any other non-text item
                     if message['message'].get('attachments'):
@@ -99,7 +99,7 @@ def _get_message(rec_message, conversation_start, member_id):
     return response_text
 
 
-def _send_message(member_id, response, conversation_start):
+def _send_message(member_id, response):
     sent_timestamp = int(time.time() * 1000)
 
     bot.send_text_message(member_id, response)
