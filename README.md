@@ -14,4 +14,6 @@ This is a Facebook application version of the Open AI's GPT-3 API: https://opena
 * A Facebook account
 * Administrator access to the Facebook Developer Application (request Flynn for this access - info@flynnowen.com)
 
+## Notes:
+I've stumbled across the adaptor design pattern (https://en.wikipedia.org/wiki/Adapter_pattern) - which this repository could be considered as (a conversational messenger adaptor for GPT-3)
 
