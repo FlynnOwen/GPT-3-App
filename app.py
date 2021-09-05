@@ -28,9 +28,9 @@ def receive_message():
 
     # Get verify token to ensure requests are legitimate
     if request.method == 'GET':
-        return 'yes'
         print('get')
         token_sent = request.args.get("hub.verify_token")
+        return 'yes'
         return _verify_fb_token(token_sent)
 
     # Post request from user when a message is received
