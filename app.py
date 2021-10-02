@@ -69,7 +69,6 @@ def receive_message():
 
                         _send_message(member_id, "My brain is not yet big enough to deal with attachments! You'll need to settle with messages for now", True)
 
-
     return "Message Processed"
 
 
