@@ -65,8 +65,8 @@ def most_recent_message_timestamp(member_id):
 
 
 def get_current_conversation(member_id):
-    #conn = sqlite3.connect('database/API-App-DB.db')
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    conn = sqlite3.connect('database/API-App-DB.db')
+    #conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
     cur = conn.cursor()
     try:
