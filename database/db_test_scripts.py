@@ -13,12 +13,17 @@ def add_message(message, member_id, timestamp, direction, conversation_start):
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
     cur = conn.cursor()
+    try:
+        cur.execute("""INSERT INTO messages 
+                       (message, member_id, timestamp, direction, conversation_start) 
+                       VALUES 
+                       (%s, %s, %s, %s, %s)""",
+                    (message, member_id, timestamp, direction, conversation_start))
 
-    cur.execute("""INSERT INTO messages 
-                   (message, member_id, timestamp, direction, conversation_start) 
-                   VALUES 
-                   (%s, %s, %s, %s, %s)""",
-                (message, member_id, timestamp, direction, conversation_start))
+        return 'Message added successfully'
+
+    except:
+        'Message could not be added'
 
     conn.commit()
     conn.close()
@@ -53,6 +58,7 @@ def most_recent_message_timestamp(member_id):
                        member_id = %s
                        """,
                     (member_id,))
+
     except:
         'An error has occurred'
 
