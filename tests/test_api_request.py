@@ -24,4 +24,3 @@ def test_open_ai_response():
     except:
         pytest.fail("An error occurred with OpenAI request")
 
-test_open_ai_response()
