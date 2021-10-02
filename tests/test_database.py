@@ -1,6 +1,5 @@
 import os
 
-import pytest
 import psycopg2
 from dotenv import load_dotenv
 
@@ -11,20 +10,36 @@ DATABASE_URL = os.environ['DATABASE_URL']
 
 
 def test_db_connection():
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    psycopg2.connect(DATABASE_URL, sslmode='require')
 
-    cur = conn.cursor()
 
-    # Use a list here to insert query parameters into the query string.
-    cur.execute(
-        """
-        SELECT * 
-        FROM messages
-        """
-    )
+def test_add_current_user():
+    assert add_user('124') == 'This user is already in the database'
 
-    result = cur.fetchone()
 
-    print(result)
+def test_add_new_user():
+    user_id = '123'
+    assert add_user(user_id) == 'User added successfully'
 
-    cur.close()
+
+def test_add_message():
+    message = 'Test'
+    member_id = '124'
+    timestamp = '1633215843337'
+    direction = 'sent'
+    conversation_start = 0
+
+    assert add_message(message, member_id, timestamp, direction, conversation_start) == 'Message added successfully'
+
+
+def test_most_recent_message_timestamp():
+    member_id = '124'
+    timestamp = '1633176546582'
+
+    assert most_recent_message_timestamp(member_id) == timestamp
+
+
+def test_get_current_conversation():
+    member_id = '124'
+
+    assert get_current_conversation(member_id) == '\nHuman: Test'
