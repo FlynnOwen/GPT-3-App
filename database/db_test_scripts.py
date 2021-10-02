@@ -34,8 +34,11 @@ def add_user(member_id):
                        VALUES 
                        (%s)""",
                     (member_id,))
-    except:
-        'This user is already in the database'
+
+        return 'User added successfully'
+
+    except psycopg2.errors.UniqueViolation:
+        return 'This user is already in the database'
 
     conn.commit()
     conn.close()
