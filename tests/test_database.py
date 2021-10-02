@@ -13,18 +13,26 @@ DATABASE_URL = os.environ['DATABASE_URL']
 def test_db_connection():
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
+
+def test_add_current_user():
+    assert add_user('4918590254824555') == 'This user is already in the database'
+
+
+def test_add_new_user():
+    user_id = '123'
+    assert add_user(user_id) == 'User added successfully'
+
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
     cur = conn.cursor()
-
-    # Use a list here to insert query parameters into the query string.
-    cur.execute(
-        """
-        SELECT * 
-        FROM messages
-        """
-    )
-
-    result = cur.fetchone()
-
-    print(result)
+    
+    cur.execute("""DELETE FROM users 
+                       WHERE
+                       member_id =
+                       (%s)""",
+                (user_id,))
 
     cur.close()
+
+
+
