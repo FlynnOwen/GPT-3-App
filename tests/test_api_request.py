@@ -10,7 +10,7 @@ def test_open_ai_response():
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
     try:
-        response = openai.Completion.create(
+        openai.Completion.create(
           engine="davinci",
           prompt="test",
           temperature=0.9,
