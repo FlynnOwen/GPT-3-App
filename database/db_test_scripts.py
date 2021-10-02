@@ -50,6 +50,7 @@ def most_recent_message_timestamp(member_id):
 
     return recent_date[0]
 
+
 def get_current_conversation(member_id):
     conn = sqlite3.connect('database/API-App-DB.db')
     cur = conn.cursor()
@@ -66,9 +67,7 @@ def get_current_conversation(member_id):
     conn.commit()
     conn.close()
 
-    unprocessed_convo = ['\nHuman: ' + rows[i][0] if i % 2 == 0 else '\nAI: ' + rows[i][0] for i in range(len(rows))]
-    processed_convo = ''.join(unprocessed_convo)
+    unprocessed_conversation = ['\nHuman: ' + rows[i][0] if i % 2 == 0 else '\nAI: ' + rows[i][0] for i in range(len(rows))]
+    processed_conversation = ''.join(unprocessed_conversation)
 
-    full_convo = processed_convo
-
-    return full_convo
+    return processed_conversation
