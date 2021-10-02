@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 import os
 
-import sqlite3
 import psycopg2
 from dotenv import load_dotenv
 
@@ -11,7 +10,6 @@ DATABASE_URL = os.environ['DATABASE_URL']
 
 def add_message(message, member_id, timestamp, direction, conversation_start):
 
-    #conn = sqlite3.connect("database/API-App-DB.db")
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
     cur = conn.cursor()
@@ -27,7 +25,6 @@ def add_message(message, member_id, timestamp, direction, conversation_start):
 
 
 def add_user(member_id):
-    #conn = sqlite3.connect('database/API-App-DB.db')
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
     cur = conn.cursor()
@@ -45,7 +42,6 @@ def add_user(member_id):
 
 
 def most_recent_message_timestamp(member_id):
-    #conn = sqlite3.connect('database/API-App-DB.db')
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
     cur = conn.cursor()
@@ -65,7 +61,6 @@ def most_recent_message_timestamp(member_id):
 
 
 def get_current_conversation(member_id):
-    #conn = sqlite3.connect('database/API-App-DB.db')
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
     cur = conn.cursor()
