@@ -1,7 +1,7 @@
 <h1 align="center"> Facebook Messenger implementation of OpenAI's GPT-3 </h1>
 
 <p align="center">
-<img width="650" height="650" src="img/GPT-3.gif"/>
+<img width="600" height="600" src="img/GPT-3.gif"/>
 </p>
   
 This is a Facebook application version of the Open AI's [GPT-3 API](https://openai.com/blog/openai-api/)
