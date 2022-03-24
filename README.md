@@ -1,7 +1,6 @@
 # Facebook Messenger implementation of OpenAI's GPT-3
 
-<p align="center">![](https://github.com/FlynnOwen/GPT-3-App/blob/main/img/GPT-3.gif)</p>
-<img align="center" width="410" height="410" src="img/GPT-3.gif"/>
+<img align="center" width="650" height="650" src="img/GPT-3.gif"/>
 
 This is a Facebook application version of the Open AI's [GPT-3 API](https://openai.com/blog/openai-api/)
 
