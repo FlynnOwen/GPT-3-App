@@ -1,4 +1,4 @@
-# Facebook Messenger implementation of OpenAI's GPT-3
+<h1 align="center"> Facebook Messenger implementation of OpenAI's GPT-3 </h1>
 
 <p align="center">
 <img width="650" height="650" src="img/GPT-3.gif"/>
