@@ -1,7 +1,7 @@
 <h1 align="center"> OpenAI's GPT-3 Messenger </h1>
 
 
-<img align="right" width="600" height="600" src="img/GPT-3.gif"/>
+<img align="right" width="500" height="600" src="img/GPT-3.gif"/>
 
 ## About:
 This is a Messenger app of Open AI's [GPT-3 API](https://openai.com/blog/openai-api/)
