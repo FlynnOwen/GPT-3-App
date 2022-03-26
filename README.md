@@ -1,14 +1,14 @@
 <h1 align="center"> OpenAI's GPT-3 Messenger </h1>
 
 
-<img align="left" width="600" height="600" src="img/GPT-3.gif"/>
+<img align="right" width="600" height="600" src="img/GPT-3.gif"/>
 
 ## About:
 This is a Messenger app of Open AI's [GPT-3 API](https://openai.com/blog/openai-api/)
 
-* Here is the relevant [Facebook application](https://www.facebook.com/The-All-Knowing-One-103780238591514)
+Here is the relevant [Facebook application](https://www.facebook.com/The-All-Knowing-One-103780238591514)
 
-* Web hosting is on a [Heroku server](https://www.heroku.com). The server has a CI/CD integration with this Github repository, such that any pushes to the 'main' branch result in a rebuilding of the web application.
+Web hosting is on a [Heroku server](https://www.heroku.com). The server has a CI/CD integration with this Github repository, such that any pushes to the 'main' branch result in a rebuilding of the web application.
 
 ## Usage:
 * Requires a Facebook account
