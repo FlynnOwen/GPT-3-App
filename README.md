@@ -3,7 +3,7 @@
 
 <img align="left" width="600" height="600" src="img/GPT-3.gif"/>
 
-  
+## About:
 This is a Messenger app of Open AI's [GPT-3 API](https://openai.com/blog/openai-api/)
 
 * Here is the relevant [Facebook application](https://www.facebook.com/The-All-Knowing-One-103780238591514)
