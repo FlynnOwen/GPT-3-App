@@ -1,9 +1,10 @@
 <h1 align="center"> OpenAI's GPT-3 Messenger </h1>
 
 
-<img align="right" width="500" height="550" src="img/GPT-3.gif"/>
+<img align="right" width="500" height="560" src="img/GPT-3.gif"/>
 
 <h2 align="center"> About: </h2>
+
 This is a Messenger app of Open AI's [GPT-3 API](https://openai.com/blog/openai-api/)
 
 Here is the relevant [Facebook application](https://www.facebook.com/The-All-Knowing-One-103780238591514)
