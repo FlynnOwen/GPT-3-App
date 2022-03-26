@@ -11,6 +11,7 @@ Here is the relevant [Facebook application](https://www.facebook.com/The-All-Kno
 Web hosting is on a [Heroku server](https://www.heroku.com) with CI/CD pipeline of rebuilding upon pushes to 'main' branch.
 
 <h2 align="center"> Usage: </h2>
+
 * Requires a Facebook account
 
 * Requires administrator access to the Facebook Developer Application (request Flynn for this access - info@flynnowen.com)
