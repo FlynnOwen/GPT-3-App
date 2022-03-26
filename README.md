@@ -1,6 +1,6 @@
 <h1 align="center"> OpenAI's GPT-3 Messenger </h1>
 
-<p align="center">
+<p align="left">
 <img width="600" height="600" src="img/GPT-3.gif"/>
 </p>
   
