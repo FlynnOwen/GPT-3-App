@@ -1,4 +1,4 @@
-<h1 align="center"> OpenAI's GPT-3 Messenger </h1>
+<h1 align="center"> OpenAI's GPT-3 Messenger Bot :robot: :speech_balloon: </h1>
 
 
 <img align="right" width="500" height="560" src="img/GPT-3.gif"/>
