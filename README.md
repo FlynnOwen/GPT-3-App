@@ -1,7 +1,7 @@
 <h1 align="center"> OpenAI's GPT-3 Messenger Bot :robot: :speech_balloon: </h1>
 
 
-<img align="right" width="500" height="560" src="img/GPT-3.gif"/>
+<img align="right" width="500" height="575" src="img/GPT-3.gif"/>
 
 <h2 align="center"> About </h2>
 
@@ -18,6 +18,6 @@ Web hosting is on a [Heroku server](https://www.heroku.com) with CI/CD pipeline 
 
 *  It is coded to be a simple conversation implementation. It will respond to messages one at a time, and can not yet respond to images, links, gifs, or any other type of attachment. This implementation has a 'working memory' of 5 minutes - meaning that if it hasn't received a message within 5 minutes of your previous message, it's memory is wiped. This wiping could be considered as a conversation. 
 
-## Notes
+<h2 align="center"> Notes </h2>
 I've stumbled across the adaptor design pattern (https://en.wikipedia.org/wiki/Adapter_pattern) - which this repository could be considered as (a conversational messenger adaptor for GPT-3)
 
